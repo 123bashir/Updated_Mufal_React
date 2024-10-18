@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./searchBar.scss";
 
-const types = ["buy", "rent"];
+const types = ["Buy Data", "Buy Airtime"];
 
 function SearchBar() {
   const [query, setQuery] = useState({
@@ -29,24 +29,8 @@ function SearchBar() {
         ))}
       </div>
       <form>
-        <input type="text" name="location" placeholder="City Location" />
-        <input
-          type="number"
-          name="minPrice"
-          min={0}
-          max={10000000}
-          placeholder="Min Price"
-        />
-        <input
-          type="number"
-          name="maxPrice"
-          min={0}
-          max={10000000}
-          placeholder="Max Price"
-        />
-        <button>
-          <img src="/search.png" alt="" />
-        </button>
+      
+       
       </form>
     </div>
   );

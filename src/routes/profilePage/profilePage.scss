@@ -52,7 +52,15 @@
           align-items: center;
           gap: 20px;
         }
-
+          button{
+            width: 100px;
+            border: none;
+            background-color: teal;
+            padding:10px 20px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+          }
         img{
           width: 40px;
           height: 40px;

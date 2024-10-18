@@ -1,25 +1,74 @@
+import { useContext, useState } from "react";
 import "./profileUpdatePage.scss";
-
+import { AuthContext } from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest"
+import { useNavigate } from "react-router-dom";
+import UploadWidget from "../../components/uploadWidget/UploadWidget";
 function ProfileUpdatePage() {
+  const {currentUser,updateUser}=useContext(AuthContext)
+  const[error,setError]=useState("")
+  const[avatar,setAvatar]=useState([])
+
+  const navigate= useNavigate()
+
+  const handleSubmit=async(e)=>{
+    e.preventDefault()
+
+    const foamData =new FormData(e.target)
+    const{email,password,username}=Object.fromEntries(foamData)
+    try {
+      const res=await apiRequest.put(`/users/${currentUser.CustomerId}`,{
+       username, email,password,avatar:avatar[0]}
+      )
+      updateUser(res.data)
+   
+      navigate("/home")
+     
+   
+    } catch (error) {
+      console.log(error)
+      setError(error.response.data.message)
+      
+    }
+  }
   return (
     <div className="profileUpdatePage">
       <div className="formContainer">
-        <form>
-          <h1>Update Profile</h1>
-          <div className="item">
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              name="username"
-              type="text"
+        <form onSubmit={handleSubmit}>
+        <div className="sideContainer">
+        <img src={avatar[0]||currentUser.avatar || "/noavata.png"} alt="" className="avatar" />
+
+        <UploadWidget 
+         uwConfig={{
+          cloudName:"dghi878zc",
+          uploadPreset:"anything",
+          multiple:false,
+          maxImageFileSize:"2000000",
+          folder:"avatars"
+        }}
+            
+          setState={setAvatar}  
             />
-          </div>
-          <div className="item">
+      </div>
+      {error && <span style={{color:"red"}}>{error}</span> }
+
+        
+          <div className="item">   
             <label htmlFor="email">Email</label>
             <input
               id="email"
               name="email"
               type="email"
+              defaultValue={currentUser.email}
+            />
+          </div>
+          <div className="item">   
+            <label htmlFor="email">Username</label>
+            <input
+              id="email"
+              name="username"
+              type="text"
+              defaultValue={currentUser.username}
             />
           </div>
           <div className="item">
@@ -29,9 +78,7 @@ function ProfileUpdatePage() {
           <button>Update</button>
         </form>
       </div>
-      <div className="sideContainer">
-        <img src="" alt="" className="avatar" />
-      </div>
+
     </div>
   );
 }

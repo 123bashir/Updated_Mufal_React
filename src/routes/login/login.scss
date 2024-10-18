@@ -2,6 +2,32 @@
   height: 100%;
   display: flex;
 
+  .heading h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.heading h3{
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.heading span{
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.heading span:hover{
+    color: #357ab8;
+}
+
   .formContainer {
     flex: 3;
     height: 100%;
@@ -24,7 +50,7 @@
         padding: 20px;
         border-radius: 5px;
         border: none;
-        background-color: teal;
+        // background-color: teal;
         color: white;
         font-weight: bold;
         cursor: pointer;
@@ -35,9 +61,9 @@
         }
       }
 
-      span{
-        color: rgba(255, 0, 0, 0.591);
-      }
+   .open-modal-button{
+    background-color: transparent;
+   }
 
       a{
         font-size: 14px;
@@ -58,4 +84,10 @@
       width: 100%;
     }
   }
+}
+.ymsk{
+  align-self: center;
+}
+.tt{
+  width: auto;
 }

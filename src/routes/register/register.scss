@@ -2,12 +2,19 @@
   height: 100%;
   display: flex;
 
+
+
+
+
+  
   .formContainer {
     flex: 3;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    #text {display:none;color:red}
+
 
     form {
       display: flex;
@@ -34,6 +41,7 @@
           cursor: not-allowed;
         }
       }
+   
 
       span {
         color: rgba(255, 0, 0, 0.591);

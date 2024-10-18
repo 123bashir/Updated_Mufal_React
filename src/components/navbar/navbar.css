@@ -1,0 +1,391 @@
+
+
+
+.avatar{
+  
+    width: 80%;
+  
+    border-radius: 121px;
+    object-fit: cover;
+  
+}
+
+.profile-container {
+  max-width: 100%;
+  margin: 160px 160px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Media query for small screens (mobile) */
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 10px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Media query for medium screens (tablets) */
+@media (max-width: 1024px) {
+  .profile-container {
+    padding: 12px;
+    margin: 30px auto;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+.profile-container:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profile-title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.profile-img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: 120px; /* Adjust the size of the icon */
+  color: #3498db;
+  transition: color 0.3s ease;
+}
+
+.profile-img:hover {
+  color: #2980b9;
+}
+
+.user-info, .security-settings, .service-history {
+  margin-bottom: 25px;
+  padding: 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+
+.user-info h2, .security-settings h2, .service-history h2 {
+  margin-bottom: 15px;
+  color: #34495e;
+  font-size: 22px;
+  font-weight: 700;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.user-info p, .security-settings p, .service-history p {
+  width: 100%; /* Full width */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Max width */
+  background-color: #f9f9f9;
+  word-wrap: break-word; /* Ensures long words are wrapped */
+  box-sizing: border-box; /* Includes padding in width calculation */
+  overflow: hidden; /* Ensures no overflow */
+}
+
+.user-info p strong, .security-settings p strong, .service-history p strong {
+  color: #2c3e50;
+}
+
+.service-history p:last-child {
+  cursor: pointer;
+  color: #2980b9;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.clickable-activity {
+  color: #2980b9;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.bbj{
+  text-decoration: none;
+}
+.clickable-activity:hover {
+  color: #1a5276;
+
+}
+
+
+
+.security-settings p:last-child {
+  cursor: pointer;
+  color: #2980b9;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.bbj{
+  /* padding: 10px 20px; */
+  border: none;
+  align-self: center;
+  margin-top: 20px;
+  
+  cursor: pointer;
+  font-size: 16px;
+}
+ /* Container for the four responsive divs */
+ .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#kano{
+  display: inline-block;
+  padding: 12px 25px;
+  background: #111;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+/* Adding a border with linear gradient animation */
+#kano:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff007f, #00e5ff, #ff7700, #00ff6a);
+  background-size: 300%;
+  z-index: -1;
+  filter: blur(5px);
+  transition: opacity 0.4s ease;
+  opacity: 1;
+  border-radius: 50px;
+  animation: gradient 4s ease infinite;
+}
+
+/* Adding hover effect for inner button */
+#kano:hover {
+  color: #111;
+  background-color: #fff;
+}
+
+/* Hovering over the gradient effect */
+#kano:hover:before {
+  opacity: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/*  */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.transaction-div {
+  width: 48%;
+  background-color: #867e7e70;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  max-width: 400px; /* Adjust max-width as needed */
+  overflow: hidden;
+}
+
+.transaction {
+  margin-bottom: 10px;
+}
+
+.transaction-date {
+  font-weight: bold;
+}
+
+.transaction-amount {
+  color: green; /* Adjust color as needed */
+}
+
+@media (max-width: 768px) {
+  .transaction-div {
+      width: 100%;
+  }
+}
+
+.icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  background-color:rgba(161, 164, 168, 0.555);
+}
+
+@media (max-width: 768px) {
+  .div {
+      width: 100%;
+  }
+}
+/* Styling each individual div */
+.box {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  flex: 1 1 200px; /* Responsive width */
+  max-width: 250px; /* Max width for each box */
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+/* Hover effect for each box */
+
+
+/* Styling for the icons */
+.icon {
+  font-size: 40px; /* Size of the icon */
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+/* Styling for the paragraph */
+.box p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .box {
+    flex: 1 1 45%; /* Two boxes per row on medium screens */
+  }
+  .icon {
+    font-size: 30px; /* Reduce icon size */
+  }
+  .box p {
+    font-size: 1em; /* Reduce text size */
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    flex: 1 1 45%; /* Maintain two boxes per row on small screens */
+    max-width: 45%; /* Optional: Maintain consistent sizing */
+  }
+  .icon {
+    font-size: 25px; /* Further reduce icon size */
+  }
+  .box p {
+    font-size: 0.9em; /* Further reduce text size */
+  }
+}
+.logout-button {
+  padding: 10px 20px;
+  background-color: #19d628;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #489e2e;
+}
+.footer-container {
+  background-color: rgb(219, 217, 217);
+  padding: 2rem 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+.footer-logo {
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 100px;
+  margin-bottom: 1rem;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.footer-logo span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+.footer-contact h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+
+
+.footer-links {
+  margin: 20px 0;
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
