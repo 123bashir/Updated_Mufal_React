@@ -1,0 +1,57 @@
+
+
+.fund-balance-container {
+    padding: 20px;
+    background-color: #f4f6f8;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .balance-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .field-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .balance-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+  }
+  
+  .balance-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .read-only {
+    background-color: #e9ecef;
+  }
+  
+  @media (max-width: 600px) {
+    .balance-input {
+      font-size: 14px;
+    }
+  }
+  

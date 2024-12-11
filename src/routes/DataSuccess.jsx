@@ -15,7 +15,7 @@ const SuccessPage = () => {
       }}
     >
       <img
-        src="https://example.com/success-image.png" // Replace with your success image URL
+        src="/success.jfif" // Replace with your success image URL
         alt="Success"
         style={{
           width: "100%",

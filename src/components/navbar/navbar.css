@@ -1,14 +1,142 @@
+ button
 
 
-
-.avatar{
-  
-    width: 80%;
-  
-    border-radius: 121px;
-    object-fit: cover;
-  
+.sidebarr-headerr
+.menuIcon {
+  display: none;
+  cursor: pointer;
 }
+
+
+.menuIcon img {
+  width: 30px;
+}
+
+.sidebarr {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebarr.active {
+  left: 0;
+}
+
+.sidebarr a {
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.profile-container {
+  padding: 20px;
+}
+
+.profile-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.service-item {
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .menuIcon {
+    display: block;
+  }
+
+  .service-item {
+    width: 100%;
+  }
+}
+/* Sidebar container */
+.sidebarr {
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: 0.3s;
+}
+
+.sidebarr a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebarr a:hover {
+  background-color: #575757;
+}
+
+.sidebarr .closebtn {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidebarr-headerr {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.main-content {
+  margin-left: 260px;
+  padding: 20px;
+}
+
+/* Responsive Sidebar */
+@media screen and (max-width: 768px) {
+  .sidebarr {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+  .sidebarr a {
+    float: left;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .sidebarr {
+    padding-top: 15px;
+  }
+  .sidebarr a {
+    font-size: 16px;
+  }
+}
+
 
 .profile-container {
   max-width: 100%;
@@ -53,7 +181,7 @@
   letter-spacing: 1px;
 }
 
-.profile-img {
+.profile-imgg {
   display: flex;
   justify-content: center;
   margin-bottom: 25px;
@@ -62,11 +190,11 @@
   transition: color 0.3s ease;
 }
 
-.profile-img:hover {
+.profile-imgg:hover {
   color: #2980b9;
 }
 
-.user-info, .security-settings, .service-history {
+.user-infoo, .security-settings, .service-history {
   margin-bottom: 25px;
   padding: 20px;
   border: 1px solid #eaeaea;
@@ -77,7 +205,7 @@
 
 
 
-.user-info h2, .security-settings h2, .service-history h2 {
+.user-infoo h2, .security-settings h2, .service-history h2 {
   margin-bottom: 15px;
   color: #34495e;
   font-size: 22px;
@@ -86,7 +214,7 @@
   padding-bottom: 5px;
 }
 
-.user-info p, .security-settings p, .service-history p {
+.user-infoo p, .security-settings p, .service-history p {
   width: 100%; /* Full width */
   padding: 20px;
   margin: 0 auto;
@@ -97,7 +225,7 @@
   overflow: hidden; /* Ensures no overflow */
 }
 
-.user-info p strong, .security-settings p strong, .service-history p strong {
+.user-infoo p strong, .security-settings p strong, .service-history p strong {
   color: #2c3e50;
 }
 

@@ -1,0 +1,57 @@
+
+.admin-pricing-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+
+  
+  .item-name {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .price-input {
+    padding: 8px;
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  @media (max-width: 600px) {
+    .item-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .price-input {
+      width: 100%;
+    }
+  }
+  
+  

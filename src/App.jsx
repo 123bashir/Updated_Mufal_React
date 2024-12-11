@@ -1,16 +1,25 @@
-
-
-
-import HomePage from "./routes/homePage/homePage";
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import mufal from "/mufalogo.png"; 
 import { useState, useEffect } from "react";
 import { Layout, RequireAuth, PreLayout } from "./routes/layout/layout";
-import ProfilePage from "./routes/profilePage/profilePage";
-import Navbar from "./components/navbar/Navbar";
+import UserTransaction from "./routes/userTransaction/userTransation"; 
+import MTN from "./routes/mtnpricing/mtnpricing";
+import Home from "../public/home/Navbar.jsx";
+import GLO from "./routes/glopricing copy/glopricing";
+import Pop from "./routes/popup/popup.jsx";
+import Landing from "../public/landing/landing";
+import AdminHome from "../public/admin/AdminHome.jsx";
+import NMOBILE from "./routes/9MOBILE/9mobilepricing";
+import AIRTEL from "./routes/airtelpricing/airtelpricing";
+import ManualDebiting from "./routes/ManualDebiting/ManualDebiting";
+import AllSubscribers from "./routes/allSubscribers copy/allSubscribers";
+import FundingHistory from "./routes/fundingHistory/fundingHistory";
+import AdminLogin from "./routes/adminLogin";
+import UserDetail from "./routes/userDetail/userDetail";
 import Fund from "./routes/Fund/fund";
-import Landing from "./routes/landing/landing";
+import ManualFunding from "./routes/ManualFunding/ManualFunding";
 import BuyAirtime from "./routes/BuyAirtime/BuyAirtime";
+import BManual from "./routes/BManual/BManual";
 import TransactionDetails from "./routes/reciept";
 import ChangePin from "./routes/changePin/ChangePin";
 import SuccessPage from "./routes/DataSuccess";
@@ -21,12 +30,16 @@ import ResetPassword from "./routes/pinReset/passwordReset";
 import PasswordForgot from "./routes/PasswordForgot/passwordForgot";
 import Register from "./routes/register/register";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
-import { singlePageLoader } from "./lib/loaders";
+import TransactionHistoryA from "./routes/transactionA";
 import TransactionHistory from "./routes/transaction";
+import BFunding from "./routes/BFunding copy/BFunding";
 
-// Simulate an authentication check (use real authentication logic in your project)
 const isAuthenticated = () => {
-  return !!sessionStorage.getItem('user'); // Example: check if token exists
+  return !!sessionStorage.getItem('user');
+};
+
+const isAdmin = () => {
+  return !!sessionStorage.getItem('admin');
 };
 
 function App() {
@@ -35,63 +48,71 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // Simulate a 2-second loading delay
+    }, 2000); 
     return () => clearTimeout(timer);
   }, []);
 
   const router = createBrowserRouter([
-    
-  
     {
       path: "/",
-      element: <Landing />,  
+      element: <Landing />,
     },
-    { 
-      path: "/ResetPassword/:id/:token", // Capture ID and token from the URL
-      element: <ResetPassword />
+    {
+      path: "/ResetPassword/:id/:token",
+      element: <ResetPassword />,
     },
     {
       path: "/login",
-      element: <Login />,  // Public login page
+      element: <Login />,
     },
-    
-    
+    {
+      path: "/Admin",
+      element: <AdminLogin />,
+    },
     {
       path: "/register",
-      element: <Register />,  // Public register page
+      element: <Register />,
     },
     
-
-    // Protected Routes (accessible only after login)
     {
       path: "/",
-      element: isAuthenticated() ? <PreLayout /> : <Navigate to="/login" />, // Redirect to login if not authenticated
+      element: isAuthenticated() ? <RequireAuth /> : <Navigate to="/login" />,
       children: [
         {
           path: "/pin/:id",
           element: <Pin />,
         },
         {
-          path: "/transaction/:id",
-          element: <TransactionHistory />,
+          path: "/transaction",
+          element: <TransactionHistoryA />,
         },
+        {
+          path: "/transactionA/:id",
+          element: <TransactionHistoryA />,
+        },
+    
         {
           path: "/reciept/:id",
           element: <TransactionDetails />,
         },
+      
         {
           path: "/DataSuccess",
           element: <SuccessPage />,
         },
         {
-          path: "/home",
-          element: <Navbar />,
+          path: "/userTransaction",
+          element: <UserTransaction />,
+        },
+     
+        {
+          path: "/Home",
+          element: <Home />,
         },
         {
           path: "/fund",
           element: <Fund />,
         },
-   
         {
           path: "/profile/update",
           element: <ProfileUpdatePage />,
@@ -112,19 +133,75 @@ function App() {
           path: "/BuyData",
           element: <BuyData />,
         },
-      
       ],
     },
-
-    // Protected Profile Route
+    
     {
       path: "/",
-      element: isAuthenticated() ? <RequireAuth /> : <Navigate to="/login" />, // Redirect to login if not authenticated
+      element: isAdmin() ? <AdminHome /> : <Navigate to="/" />,
       children: [
         {
-          path: "/profile",
-          element: <ProfilePage />,
+          path: "/Adminhome",
+          element: <AdminHome />,
         },
+        {
+          path: "/ManualFunding",
+          element: <ManualFunding />,
+        },
+        {
+          path: "/user/:id",
+          element: <UserDetail />,
+        },
+        {
+          path: "/MFunding",
+          element: <BFunding />,
+        },
+        {
+          path: "/ManualDebiting",
+          element: <ManualDebiting />,
+        },
+        {
+          path: "/AllSubscribers",
+          element: <AllSubscribers />,
+        },
+        {
+          path: "/Pop",
+          element: <Pop />,
+        },
+        {
+          path: "/FundingHistory",
+          element: <FundingHistory />,
+        },
+        {
+          path: "/BDebiting/:id",
+          element: <ManualDebiting />,
+        },
+        {
+          path: "/BManual",
+          element: <BManual />,
+        },
+        {
+          path: "/BManual/:id",
+          element: <ManualFunding />,
+        },
+        {
+          path: "/9mobilepricing",
+          element: <NMOBILE />,
+        },
+        {
+          path: "/glopricing",
+          element: <GLO />,
+        },
+        {
+          path: "/airtelpricing",
+          element: <AIRTEL />,
+        },
+        {
+          path: "/mtnpricing",
+          element: <MTN />,
+        },
+     
+     
       ],
     },
   ]);
@@ -171,4 +248,3 @@ function App() {
 }
 
 export default App;
-

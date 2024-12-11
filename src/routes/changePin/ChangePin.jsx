@@ -8,11 +8,24 @@ import { AuthContext } from "../../context/AuthContext";
 
 function ChangePin() {
   const{currentUser}=useContext(AuthContext)
+  const [inputValue, setInputValue] = useState('');
 
+  const handleChange = (e) => {
+    const value = e.target.value;
 
+    // Allow only numbers and restrict to 4 characters
+    if (/^\d{0,4}$/.test(value)) {
+      setInputValue(value);
+    }
+  };
 
 
   const navigate=useNavigate()
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const{updateUser}=useContext(AuthContext)
   const [error,setError]=useState("")
@@ -46,40 +59,174 @@ navigate("/home")
     setIsLoading(false)
    }
   }
-
   return (
-    
-    <div className="login">
-      <div className="formContainer">
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        backgroundColor: '#f0f2f5',
+      }}
+    >
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '400px',
+          padding: '20px',
+          backgroundColor: '#fff',
+          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+          borderRadius: '8px',
+          textAlign: 'center',
+        }}
+      >
         <form onSubmit={handleSubmit}>
-        <img src={ "/mufalogo.png"} alt="" width="50%" style={{alignSelf:"center"}} />
-        {error&&<span style={{color:"red"}}>{error}</span>}
-          <h4>Change New Transaction Pin</h4>
-          <div className='heading'>
+          <img
+            src={"/mufalogo.png"}
+            alt="Logo"
+            style={{
+              width: "100%",
+              maxWidth: "200px",
+              margin: "0 auto",
+              marginBottom: '20px'
+            }}
+          />
+          <div className='heading' style={{ marginBottom: '20px' }}>
+            <p style={{backgroundColor:"inherit"}}>
+              Change Your Transaction {' '}
+                <span>Pin</span>
        
-            </div>
-          <input name="OldP"  maxLength={4} type="password" placeholder="Old Pin" />
-          <input name="NewP" maxLength={4} type="password" placeholder="New Pin" />
-          <input name="CNewP" maxLength={4} type="password" placeholder="Confirm New Pin" />
+            </p>
+          </div>
+          <div style={{ position: 'relative', width: '100%', marginBottom: '20px' }}>
+            <input
+              name="OldP"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter Old Pin"
+              value={inputValue}
+              onChange={handleChange}
+              maxLength="4" // Limits input to 4 characters
+              pattern="\d*" // Ensures only numbers are input
+              required
+              style={{
+                width: '100%',
+                padding: '12px',
+                paddingRight: '40px', // Space for the icon
+                borderRadius: '4px',
+                border: '1px solid #ccc',
+                fontSize: '16px',
+                boxSizing: 'border-box',
+              }}
+            />
+            <span
+              onClick={togglePasswordVisibility}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                fontSize: '18px',
+                color: '#333',
+              }}
+            >
+              {showPassword ? '🚫' : '👁️'}
+            </span>
+          </div>
+          <div style={{ position: 'relative', width: '100%', marginBottom: '20px' }}>
+            <input
+              name="NewP"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter New Pin"
+              maxLength="4" // Limits input to 4 characters
+              pattern="\d*" // Ensures only numbers are input
+              required
+              style={{
+                width: '100%',
+                padding: '12px',
+                paddingRight: '40px', // Space for the icon
+                borderRadius: '4px',
+                border: '1px solid #ccc',
+                fontSize: '16px',
+                boxSizing: 'border-box',
+              }}
+            />
+            <span
+              onClick={togglePasswordVisibility}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                fontSize: '18px',
+                color: '#333',
+              }}
+            >
+              {showPassword ? '🚫' : '👁️'}
+            </span>
+          </div>
+          {/* Password Input with Toggle Icon */}
+          <div style={{ position: 'relative', width: '100%', marginBottom: '20px' }}>
+            <input
+              name="CNewP"
+              type={showPassword ? "text" : "password"}
+              placeholder="Confirm New Pin"
+              maxLength="4" // Limits input to 4 characters
+              pattern="\d*" // Ensures only numbers are input
+              required
+              style={{
+                width: '100%',
+                padding: '12px',
+                paddingRight: '40px', // Space for the icon
+                borderRadius: '4px',
+                border: '1px solid #ccc',
+                fontSize: '16px',
+                boxSizing: 'border-box',
+              }}
+            />
+            <span
+              onClick={togglePasswordVisibility}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                fontSize: '18px',
+                color: '#333',
+              }}
+            >
+              {showPassword ? '🚫' : '👁️'}
+            </span>
+          </div>
 
-            
-           
-          <button type="submit"  disabled={isLoading}>Change Now</button>
-          <div>
-                    
+          <button
+            type="submit"
+            disabled={isLoading}
+            style={{
+              width: '100%',
+              padding: '12px',
+              backgroundColor: '#007bff',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '4px',
+              fontSize: '16px',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s ease',
+              marginBottom: '10px'
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = '#0056b3')}
+            onMouseOut={(e) => (e.target.style.backgroundColor = '#007bff')}
+          >
+            {isLoading ? 'Loading...' : 'Change Now'}
+          </button>
 
+          {error && <span style={{ color: "red" }}>{error}</span>}
 
-<h3>  <Link to="/">{"GO "} To Homepage</Link>   </h3>
-                    
-
-                 </div>
      
-
         </form>
       </div>
-      {/* <div className="imgContainer"> */}
-        {/* <img className="yhy" src="/landingImg.jpg" alt="" /> */}
-      {/* </div> */}
     </div>
   );
 }

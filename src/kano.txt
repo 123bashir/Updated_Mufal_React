@@ -1,4 +1,66 @@
     
+
+     {
+          path: "/transactionA/:id",
+          element: <TransactionHistoryA />,
+        },
+        {
+          path: "/user/:id",
+          element: <UserDetail />,
+        },
+        {
+          path: "/reciept/:id",
+          element: <TransactionDetails />,
+        },
+        {
+          path:"/BManual",
+          element:<BManual/>
+        },
+        {
+          path:"/BManual/:id",
+          element:<ManualFunding/>
+        },
+        {
+          path:"/9mobilepricing",
+          element:<NMOBILE />,
+        },
+        {
+          path:"/glopricing",
+          element:<GLO />,
+        },
+        {
+          path:"/airtelpricing",
+          element:<AIRTEL />,
+        },
+        {
+          path:"/mtnpricing",
+          element:<MTN />,
+        },
+        {
+          path:"/MFunding",
+          element:<BFunding/>
+        },
+        {
+          path:"/BDebiting/:id",
+          element:<ManualDebiting/>
+        },
+        {
+          path: "/DataSuccess",
+          element: <SuccessPage />,
+        },
+   
+        {
+          path: "/userTransaction",
+          element: <UserTransaction />,
+        },
+        {
+          path: "/AllSubscribers",
+          element: <AllSubscribers />,
+        },
+        {
+          path:"/FundingHistory", 
+          element:<FundingHistory />,
+        },
 <body>
     
 

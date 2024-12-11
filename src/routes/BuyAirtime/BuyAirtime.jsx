@@ -48,13 +48,13 @@ try {
       const response=await apiRequest.post("auth/BuyAirtime",{
         network,phonenumber,pin,byepass,Plan,id
       }) 
-  
+      console.log(response)
       navigate("/DataSuccess")
 
 
 } catch (err) {
-  console.log(err)
-  setError(err.response)
+  console.log(err.response.data.message)
+  setError(err.response.data.message)
 
   
 }
@@ -102,19 +102,24 @@ try {
      
           <input name="phonenumber"  type="number" placeholder="PhoneNumber" required  />
           <input
-          type="password" // Hidden like a password field
+          type="password"
           id="number-input"
           value={inputValue}
           name="pin"
           onChange={handleChange}
-          maxLength="4" // Limits input to 4 characters
-          pattern="\d*" // Ensures only numbers are input
+          maxLength="4"
+          pattern="\d*"
           placeholder="Enter 4 digits"
           required
         />
-          <label>
-          <input type="checkbox"  name="byepass"/> Byepass Number Validator
-        </label>
+       
+       <div style={{ marginBottom: '20px' }}>
+            <label style={{ fontSize: '14px' }}>
+           Byepass Number??
+            </label>
+            <input name="byepass" type="checkbox"  style={{ marginRight: '10px' }} />
+
+          </div>
 
            
           <button type="submit"  >Buy Now</button>

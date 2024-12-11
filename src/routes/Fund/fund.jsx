@@ -7,15 +7,7 @@ function Fund() {
 
   const [amount, setAmount] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
-  const [paymentUrl, setPaymentUrl] = useState(null); 
   const [loading, setLoading] = useState(false);
-
-  const apiKey = "MK_TEST_APYH15682J"; 
-  const secretKey = "LSGV28Q2ND84GGCZHDV2W7N03ZEERZ09"; 
-  const contractCode = "8042227522"; 
-  const baseUrl = "https://sandbox.monnify.com"; 
-
-  const authToken = btoa(`${apiKey}:${secretKey}`);
 
   const handleAmountChange = (e) => {
     const inputAmount = e.target.value;
@@ -32,27 +24,25 @@ function Fund() {
       amount: totalAmount,
       customerName: currentUser.username,
       customerEmail: currentUser.email,
-      paymentReference: `monnify_${Date.now()}`,
+      paymentReference: `monnify_${Date.now()}`,   
       paymentDescription: "Payment for services",
       currencyCode: "NGN",
-      contractCode: contractCode,
-      redirectUrl: "http://localhost:8800/api/auth/fund",
+
+      contractCode: "8042227522",
+      isTestMode:true,
+      redirectUrl: "http://localhost:5173/DataSuccess",
       paymentMethods: ["CARD", "ACCOUNT_TRANSFER"],
     };
 
     try {
+      // Sending the payment request to your backend proxy
       const response = await axios.post(
-        `${baseUrl}/api/v1/merchant/transactions/init-transaction`,
-        paymentData,
-        {
-          headers: {
-            Authorization: `Basic ${authToken}`,
-            "Content-Type": "application/json",
-          },
-        }
+        `http://localhost:8800/api/initiate-payment`, // Your backend URL
+        paymentData
       );
-      setPaymentUrl(response.data.responseBody.paymentUrl);
+
       const checkoutUrl = response.data.responseBody.checkoutUrl;
+      // Redirecting the user to Monnify's checkout page
       window.location.href = checkoutUrl;
     } catch (error) {
       console.error("Error initiating payment:", error);

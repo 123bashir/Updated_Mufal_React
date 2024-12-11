@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 
-// Base64 encode and decode functions for obfuscation
 const encodeData = (data) => btoa(JSON.stringify(data));
 const decodeData = (encodedData) => JSON.parse(atob(encodedData));
 
@@ -10,23 +9,38 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     sessionStorage.getItem("user")
       ? decodeData(sessionStorage.getItem("user"))
-      : null
+      : null 
   );
+  const [currentAdmin, setCurrentAdmin] = useState(
+    sessionStorage.getItem("admin")
+      ? decodeData(sessionStorage.getItem("admin"))
+      : null 
+  );
+  const updateAdmin = (data) => {
+    setCurrentAdmin(data);
+  };
 
   const updateUser = (data) => {
     setCurrentUser(data);
   };
+  useEffect(() => {
+    if (currentAdmin) {
+      sessionStorage.setItem("admin", encodeData(currentAdmin));
+    } else {
+      sessionStorage.removeItem("admin");
+    }
+  }, [currentAdmin]);
 
   useEffect(() => {
     if (currentUser) {
       sessionStorage.setItem("user", encodeData(currentUser));
     } else {
-      sessionStorage.removeItem("user"); // Clear if null
+      sessionStorage.removeItem("user");
     }
   }, [currentUser]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, updateUser }}>
+    <AuthContext.Provider value={{ currentUser, updateUser,currentAdmin,updateAdmin }}>
       {children}
     </AuthContext.Provider>
   );
