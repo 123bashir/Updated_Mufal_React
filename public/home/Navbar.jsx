@@ -48,7 +48,8 @@ useEffect(()=>{
     try {
  
       const response = await axios.get(`http://localhost:8800/api/auth/transaction/${id}`); // Adjust URL accordingly
-   const price=response.data
+   const price=response.data  
+   console.log(response.data)
            setTrans(price)
     }
     
@@ -463,7 +464,7 @@ Are Sure You Want Logout?        </div>
           <tr key={index}>
             <td>{tr.transactionid}</td>
             <td>{tr.transactionstatus}</td>
-            <td>{tr.TodayDate}</td>
+            <td>{tr.createdAt}</td>
             <td>{tr.PlanName}</td>
             <td>{tr.RecipientNumber}</td>
           </tr>

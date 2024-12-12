@@ -71,7 +71,7 @@ function App() {
     },
     {
       path: "/register",
-      element: <Register />,
+      element: <Register />, 
     },
     
     {
@@ -138,7 +138,7 @@ function App() {
     
     {
       path: "/",
-      element: isAdmin() ? <AdminHome /> : <Navigate to="/" />,
+      element: isAdmin() ? <RequireAuth /> : <Navigate to="/" />,
       children: [
         {
           path: "/Adminhome",

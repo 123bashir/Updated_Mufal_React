@@ -27,7 +27,7 @@ const SuccessPage = () => {
         Transaction Successful!
       </h1>
       <p style={{ fontSize: "18px", marginBottom: "30px", color: "#333" }}>
-        Your transaction was completed successfully. Thank you for using our
+         Successfully. Thank you for using our
         service.
       </p>
       <button

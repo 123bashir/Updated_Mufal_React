@@ -1,6 +1,6 @@
 
   
-    import React, { useState } from 'react';
+    import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
@@ -22,13 +22,18 @@ function BuyData() {
 
   const [inputValue, setInputValue] = useState('');
   const{updateUser,currentUser}=useContext(AuthContext)
-  const handleload = async () => {
-    setError(null);
+
+   const navigate=useNavigate()
+  useEffect(()=>{
+    const fetchPrice=async()=>{
+      setError(null);
     const response = await axios.get('http://localhost:8800/api/auth/home');
     const pricee = response.data[0];
   setDone(pricee) 
-  }
- 
+        }
+        fetchPrice()
+  },[])
+
    
  
          const [isLoading,setIsLoading]=useState(false) 
@@ -185,18 +190,21 @@ const price=done
     const checkbox=foamData.get("checkbox")  
     const mtnplan=foamData.get("mtnplan")  
   const id=currentUser.CustomerId
+
     try {
       const res=await apiRequest.post("/auth/BuyData",{
         network,datatype,mtnplan,phonenumber,pin,id,checkbox,mtnsme500,mtnsme1gb,mtnsme2gb,mtnsme3gb,mtnsme5gb,mtnsme10gb,mtnsme2500mb,mtnsme21gb,mtnsme21p5,mtnsme22gb,mtnsme23gb,mtnsme24gb,mtnsme25gb,mtnsme210gb,mtndatashare1gb,mtndatashare2gb,mtndatashare3gb,mtndatashare5gb
      , mtndatashare500mb,byepass,mtncooperate500mb,nairaSign,mtncooperate250mb,mtncooperate1gb,mtncooperate2gb,mtncooperate3gb,mtncooperate5gb,mtncooperate10gb,mtngifting500mb,mtngifting1gb,mtngifting1p5gb,mtngifting2p5gb,mtngifting3p5gb,mtngifting15gb,airelgifting1gb,airelgifting3gb,airelgifting10gb,airelcooperate500mb,airelcooperate300mb,airelcooperate1gb,airelcooperate2gb,airelcooperate5gb,airelcooperate10gb,airelcooperate15gb,glo200mb,glo500mb,glo1gb,glo2gb,glo3gb,glo5gb,glo10gb,nine500mb,nine1gb,nine2gb,nine3gb,nine5gb,nine10gb,nine15gb
-
-    })
-    updateUser(res.data)
-      Navigate("/DataSuccess")
  
+    })
+
+    updateUser(res.data[0])
+      navigate("/DataSuccess")
+
 
 } catch (err) {
       setError(err.response.data.message)
+      console.log(err)
     }
    finally{
     setIsLoading(false) 
@@ -216,7 +224,7 @@ const price=done
               alignSelf: 'center',
               marginBottom: '20px',
             }}
-            onLoad={handleload}
+        
           />
           
           {error && <span style={{ color: 'red', textAlign: 'center' }}>{error}</span>}

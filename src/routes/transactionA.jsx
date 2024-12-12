@@ -19,6 +19,8 @@ const TransactionHistory = () => {
         const response = await apiRequest.get(`/auth/transactionA/${id}`);
         const data = response.data;
         setTransaction(data);
+
+        console.log(response.data)
       } catch (error) {
         console.error("Error fetching message:", error);
       }
@@ -78,7 +80,7 @@ const TransactionHistory = () => {
             <strong>Transaction ID:</strong> {transaction.transactionid}
           </p>
           <p style={{ margin: '5px 0' }}>
-            <strong>Date:</strong> {transaction.TodayDate}
+            <strong>Date:</strong> {transaction.createdAt}
           </p>
           <p style={{ margin: '5px 0' }}>
             <strong>Status:</strong> {transaction.transactionstatus}
