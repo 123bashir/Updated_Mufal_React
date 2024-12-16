@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest";
 
 function Fund() {
   const { currentUser } = useContext(AuthContext);
@@ -28,7 +29,7 @@ function Fund() {
       paymentDescription: "Payment for services",
       currencyCode: "NGN",
 
-      contractCode: "8042227522",
+      contractCode: "2085089963",
       isTestMode:true,
       redirectUrl: "http://localhost:5173/DataSuccess",
       paymentMethods: ["CARD", "ACCOUNT_TRANSFER"],
@@ -40,7 +41,6 @@ function Fund() {
         `http://localhost:8800/api/initiate-payment`, // Your backend URL
         paymentData
       );
-
       const checkoutUrl = response.data.responseBody.checkoutUrl;
       // Redirecting the user to Monnify's checkout page
       window.location.href = checkoutUrl;
@@ -50,6 +50,8 @@ function Fund() {
       setLoading(false);
     }
   };
+ 
+
 
   return (
     <div style={{ maxWidth: "400px", margin: "auto", padding: "20px", fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", borderRadius: "8px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>

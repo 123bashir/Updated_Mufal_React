@@ -670,7 +670,7 @@ height: fit-content;
 					</li>
 					<li>
 						<div class="client-grids">
-							<img src="/tk.png" class="img-fluid" alt="Responsive image"  >
+							<img src="/tk.png" class="img-fluid" alt="Responsive image" width="20%" >
 							<h4 class="my-4" style="color: black;">Tukur S Gama</h4>
 							<p class="paragraph-agileinfo" style="color: black;">From bills to airtime, MufalDataSub delivers without a hitch. Their unwavering commitment to customer satisfaction is evident in every transaction."</p>
 						</div>
@@ -755,7 +755,7 @@ height: fit-content;
 
 	<div class="w3l-copy text-center py-4">
 		<p class="text-white">© 2024 Mufal DataSub All rights reserved | Design by
-			<a href="http://w3layouts.com/">Row Tech Company Sharada Phase 2 ,Yahaya Gusau Road,Kano State ,Nigeria</a>
+			<a href="#" onclick="handleWhatsAppRedirect()">Bashir Yusuf Muhammad</a>
 		</p>
 	</div>
 
@@ -808,6 +808,18 @@ height: fit-content;
 			});
 
 		});
+	</script>
+	<script>
+		  const handleLogoutClick = () => {
+    setShowLogout(true)
+  };
+  const handleWhatsAppRedirect = () => {
+    const phoneNumber = '+2347060913899';
+    const msg = encodeURIComponent(`Assalamu Alaika Bashir I See One Of Your Project Which is Mufal DataSub I really Like It`);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${msg}`;
+    window.open(whatsappUrl, "_blank");
+  }; 
+  
 	</script>
 	<!-- //flexisel slider (for middle Slider) -->
 

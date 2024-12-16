@@ -38,7 +38,15 @@ const navigate=useNavigate()
     const msg = encodeURIComponent(`Hello, I am "${currentUser.username}", and I am using Mufal Data Sub Smoothly.`);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${msg}`;
     window.open(whatsappUrl, "_blank");
-  };
+  }; 
+  
+  useEffect(()=>{
+    const Data=async()=>{
+    const res=await apiRequest.get(`/auth/Data/${id}`)  
+         updateUser(res.data)
+    }
+    Data()
+ },[])
 useEffect(()=>{  
   const fetchTrans=async()=>{
 
@@ -47,9 +55,8 @@ useEffect(()=>{
     
     try {
  
-      const response = await axios.get(`http://localhost:8800/api/auth/transaction/${id}`); // Adjust URL accordingly
+      const response = await apiRequest.get(`/auth/transaction/${id}`); // Adjust URL accordingly
    const price=response.data  
-   console.log(response.data)
            setTrans(price)
     }
     
