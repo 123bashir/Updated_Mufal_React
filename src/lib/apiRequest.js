@@ -2,7 +2,8 @@ import axios from "axios"
 
 
 const apiRequest= axios.create({
-    baseURL:"http://localhost:8800/api",
+    baseURL:"http://api.mufaldatasub.com",
+    // baseURL:"http://localhost:8800/api",
     withCredentials:true,
 })
 
