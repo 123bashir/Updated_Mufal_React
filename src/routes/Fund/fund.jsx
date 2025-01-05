@@ -31,14 +31,14 @@ function Fund() {
 
       contractCode: "2085089963",
       isTestMode:true,
-      redirectUrl: "http://localhost:5173/DataSuccess",
+      redirectUrl: "https://mufaldatasub.com/DataSuccess",
       paymentMethods: ["CARD", "ACCOUNT_TRANSFER"],
     };
 
     try {
       // Sending the payment request to your backend proxy
       const response = await axios.post(
-        `http://localhost:8800/api/initiate-payment`, // Your backend URL
+        `https://api.mufaldatasub.com/api/initiate-payment`, // Your backend URL
         paymentData
       );
       const checkoutUrl = response.data.responseBody.checkoutUrl;
