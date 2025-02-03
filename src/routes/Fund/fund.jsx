@@ -1,51 +1,66 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-
+import { useEffect } from "react";
+import apiRequest from "../../lib/apiRequest";
+import { redirect, useNavigate } from "react-router-dom";
 function Fund() {
+   const navigate=useNavigate()
+     
+    useEffect(() => {
+      const checkUser = async () => {
+        const user = sessionStorage.getItem("user");
+        if (!user) {
+          navigate("/login");
+        }
+      };
+      checkUser();
+    }, [navigate]);
   const { currentUser } = useContext(AuthContext);
 
   const [amount, setAmount] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
+  
   const [loading, setLoading] = useState(false);
 
   const handleAmountChange = (e) => {
     const inputAmount = e.target.value;
     if (/^\d*$/.test(inputAmount)) {
       setAmount(inputAmount);
-      setTotalAmount((parseFloat(inputAmount) * 1.014).toFixed(2)); // Adds 1.4% fee
+      setTotalAmount((parseFloat(inputAmount) -50).toFixed(2)); 
     }
+ 
   };
 
   const initiatePayment = async () => {
+    if (!amount || amount <= 0) {
+      alert("Please enter a valid amount");
+      return;
+    }
+
     setLoading(true);
-
-    const paymentData = {
-      amount: totalAmount,
-      customerName: currentUser.username,
-      customerEmail: currentUser.email,
-      paymentReference: `monnify_${Date.now()}`,   
-      paymentDescription: "Payment for services",
-      currencyCode: "NGN",
-
-      contractCode: "8042227522",
-      isTestMode:true,
-      redirectUrl: "http://localhost:5173/DataSuccess",
-      paymentMethods: ["CARD", "ACCOUNT_TRANSFER"],
-    };
-
     try {
-      // Sending the payment request to your backend proxy
-      const response = await axios.post(
-        `http://localhost:8800/api/initiate-payment`, // Your backend URL
-        paymentData
-      );
+      const paymentData = {
+        amount: parseFloat(amount),
+        customerName: currentUser.username,
+        customerEmail: currentUser.email,
+        paymentReference: `monnify_${Date.now()}`,   
+        paymentDescription: "Payment For MufalDatasub",
+        currencyCode: "NGN",
+        contractCode: "2085089963",
+        isTestMode: true,
+        paymentMethods: ["CARD", "ACCOUNT_TRANSFER"]
+      };
 
-      const checkoutUrl = response.data.responseBody.checkoutUrl;
-      // Redirecting the user to Monnify's checkout page
-      window.location.href = checkoutUrl;
+      const response = await apiRequest.post('/initiate-payment', paymentData);
+      
+      if (response.data && response.data.responseBody && response.data.responseBody.checkoutUrl) {
+        window.location.href = response.data.responseBody.checkoutUrl;
+      } else {
+        alert("Unable to initiate payment. Please try again.");
+      }
     } catch (error) {
-      console.error("Error initiating payment:", error);
+      alert("Error initiating payment. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -66,11 +81,11 @@ function Fund() {
         />
       </div>
       <div style={{ marginBottom: "20px" }}>
-        <label htmlFor="totalAmount" style={{ display: "block", marginBottom: "8px", color: "#555" }}>Amount To Pay (include 1.4% fee):</label>
+        <label htmlFor="totalAmount" style={{ display: "block", marginBottom: "8px", color: "#555" }}>Amount To Be Added In Wallet</label>
         <input 
           type="text" 
           id="totalAmount" 
-          value={totalAmount} 
+          value={totalAmount}   
           readOnly 
           style={{ width: "100%", padding: "10px", fontSize: "16px", borderRadius: "4px", border: "1px solid #ccc", backgroundColor: "#e9ecef", color: "#333" }} 
         />

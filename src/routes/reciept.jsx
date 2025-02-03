@@ -7,8 +7,20 @@ import { useEffect } from 'react';
 import html2canvas from 'html2canvas';
 import { useContext } from 'react';
 import { jsPDF } from 'jspdf';
+import { useNavigate } from 'react-router-dom';
 
 function TransactionDetails() {
+   const navigate=useNavigate()
+     
+    useEffect(() => {
+      const checkUser = async () => {
+        const user = sessionStorage.getItem("user");
+        if (!user) {
+          navigate("/login");
+        }
+      };
+      checkUser();
+    }, [navigate]);
 const{id}=useParams("") 
 const[transaction,setDetail]=useState([])
   useEffect(() => {

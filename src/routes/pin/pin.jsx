@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
-import "./pin.scss";
+import { useContext, useEffect, useState } from "react";
+import "./pin.scss"; 
+
 import { useParams } from "react-router-dom";
 
 import { AuthContext } from "../../context/AuthContext";
@@ -8,11 +9,21 @@ import { Link, useNavigate } from "react-router-dom";
 import apiRequest  from "../../lib/apiRequest";
 
 
-function Pin() {
+function Pin() {  
+  const navigate=useNavigate()
+   
+  useEffect(() => {
+    const checkUser = async () => {
+      const user = sessionStorage.getItem("user");
+      if (!user) {
+        navigate("/login");
+      }
+    };
+    checkUser();
+  }, [navigate]);
   const {currentUser}=useContext(AuthContext)
   const {id} = useParams();
 
-  const navigate=useNavigate()
   const [inputValue, setInputValue] = useState('');
 
   const{updateUser}=useContext(AuthContext)

@@ -147,7 +147,7 @@ try {
           <br></br>
       <button 
           style={{ width: "100%", padding: "12px", fontSize: "18px", borderRadius: "4px", backgroundColor: "#007bff", color: "#fff", border: "none", cursor: "pointer" }}>
-          Change Now
+          Update Now
         </button>
         </form>
       </div>

@@ -1,64 +1,48 @@
-import React, { useState } from "react";
-import { useContext,  useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
-import apiRequest from "../../src/lib/apiRequest";
 import { AuthContext } from "../../src/context/AuthContext";
-import  "./assets/vendor/bootstrap/css/bootstrap.min.css"
-import  "./assets/vendor/bootstrap-icons/bootstrap-icons.css" 
+import apiRequest from "../../src/lib/apiRequest";
+import "./assets/vendor/bootstrap/css/bootstrap.min.css";
+import "./assets/vendor/bootstrap-icons/bootstrap-icons.css";
 import { FaMobileAlt, FaWifi } from 'react-icons/fa';
-import "./assets/css/style.css"
+import "./assets/css/style.css";
+
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { updateUser, currentUser } = useContext(AuthContext);
+  const id = currentUser.CustomerId;
+
+  const [userData, setUserData] = useState(null); // Track user data
+  const [isLoading, setIsLoading] = useState(true); // Track loading state
   const [message, setMessage] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
-const navigate=useNavigate()
-  const [trans,setTrans]=useState([]) 
+  const [trans, setTrans] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showBalance, setShowBalance] = useState(true);
-  const { updateUser, currentUser } = useContext(AuthContext); 
-  const id=currentUser.CustomerId
 
-  const handleClose = () => {
-    setShowDialog(false);
-  };
-  const handleLogoutClose = () => {
-    setShowLogout(false);
-  };
-  const handleLogout =async () => {
-    const res=await apiRequest.delete("/auth/logout") 
-    sessionStorage.removeItem("user")
-    navigate("/")
-  };
-  const handleLogoutClick = () => {
-    setShowLogout(true)
-  };
-  const handleWhatsAppRedirect = () => {
-    const phoneNumber = '+2349038271764';
-    const msg = encodeURIComponent(`Hello, I am "${currentUser.username}", and I am using Mufal Data Sub Smoothly.`);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${msg}`;
-    window.open(whatsappUrl, "_blank");
-  };
-useEffect(()=>{  
-  const fetchTrans=async()=>{
+  useEffect(() => {
+    // This hook is always called unconditionally
+    const data = sessionStorage.getItem("user");
+    setUserData(data);
+    setIsLoading(false); // Ensure loading state is set to false after fetching
+  }, []); // Empty dependency array ensures it runs only once
 
-
-
-    
-    try {
- 
-      const response = await axios.get(`http://localhost:8800/api/auth/transaction/${id}`); // Adjust URL accordingly
-   const price=response.data  
-   console.log(response.data)
-           setTrans(price)
-    }
-    
-     catch (err) {
-      console.error(err);
-    }
-  }
-      fetchTrans()
-},[])
+  useEffect(() => {
+    const fetchTrans = async () => {
+      try {
+        const response = await apiRequest.get(`/auth/transaction/${id}`); // Adjust URL accordingly
+        const price = response.data;
+        setTrans(price);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchTrans();
+  }, [id]);
 
   useEffect(() => {
     const fetchMessage = async () => {
@@ -66,13 +50,46 @@ useEffect(()=>{
         const response = await apiRequest.get("/auth/dialog");
         setMessage(response.data);
         setShowDialog(true);
-
       } catch (error) {
         console.error("Error fetching message:", error);
       }
     };
     fetchMessage();
   }, []);
+
+  // Handle loading state and user redirection
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!userData) {
+    return <Navigate to="/login" />;
+  }
+
+  const handleClose = () => {
+    setShowDialog(false);
+  };
+
+  const handleLogoutClose = () => {
+    setShowLogout(false);
+  };
+
+  const handleLogout = async () => {
+    const res = await apiRequest.delete("/auth/logout");
+    sessionStorage.removeItem("user");
+    navigate("/login"); // Redirect to login after logout
+  };
+
+  const handleLogoutClick = () => {
+    setShowLogout(true);
+  };
+
+  const handleWhatsAppRedirect = () => {
+    const phoneNumber = '+2349038271764';
+    const msg = encodeURIComponent(`Hello, I am ${currentUser.username}, and I am using Mufal Data Sub Smoothly.`);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${msg}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -81,7 +98,6 @@ useEffect(()=>{
   const toggleBalance = () => {
     setShowBalance(!showBalance);
   };
-
   return (
     <>  
     
@@ -194,7 +210,7 @@ Confirm First     </div>
           marginBottom: "20px",
         }}
       >
-Are Sure You Want Logout?        </div>
+           Are You Sure,You Want Logout?        </div>
       <button
         onClick={handleLogout}
         style={{
@@ -380,7 +396,7 @@ Are Sure You Want Logout?        </div>
                         onClick={toggleBalance}
                       ></i>
                   </div>
-                <Link to="/fund"  > <button className="btn btn-primary fund-btn">Fund</button> </Link> 
+              <a href="/fund"> <button className="btn btn-primary fund-btn">Fund</button> </a>
                 </div>
               </div>
               <div className="card">

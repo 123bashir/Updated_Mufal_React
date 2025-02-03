@@ -133,7 +133,7 @@ function PasswordForgot() {
             onMouseOver={(e) => (e.target.style.backgroundColor = '#0056b3')}
             onMouseOut={(e) => (e.target.style.backgroundColor = '#007bff')}
           >
-            {isLoading ? 'Loading...' : 'Login'}
+            {isLoading ? 'Loading...' : 'Send A Link Now'}
           </button>
 
           {error && <span style={{ color: "red" }}>{error}</span>}
