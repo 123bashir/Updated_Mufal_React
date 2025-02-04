@@ -409,7 +409,7 @@ try {
           <br></br>  
           <button type="submit"
           style={{ width: "100%", padding: "12px", fontSize: "18px", borderRadius: "4px", backgroundColor: "#007bff", color: "#fff", border: "none", cursor: "pointer" }}>
-          Pay Now
+          Update Now
         </button>
           </form>
       </div>

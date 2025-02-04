@@ -27,7 +27,7 @@ function BuyData() {
   useEffect(()=>{
     const fetchPrice=async()=>{
       setError(null);
-    const response = await axios.get('http://localhost:8800/api/auth/home');
+    const response = await apiRequest.get('/auth/home');
     const pricee = response.data[0];
   setDone(pricee) 
         }

@@ -12,7 +12,16 @@ const TransactionHistory = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext); 
   const id = currentUser.CustomerId;
-
+   
+  useEffect(() => {
+    const checkUser = async () => {
+      const user = sessionStorage.getItem("user");
+      if (!user) {
+        navigate("/login");
+      }
+    };
+    checkUser();
+  }, [navigate]);
   useEffect(() => {
     const fetchMessage = async () => {
       try {
@@ -20,7 +29,6 @@ const TransactionHistory = () => {
         const data = response.data;
         setTransaction(data);
 
-        console.log(response.data)
       } catch (error) {
         console.error("Error fetching message:", error);
       }

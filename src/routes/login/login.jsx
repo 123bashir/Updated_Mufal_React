@@ -24,9 +24,10 @@ function Login() {
     const password = formData.get("password");
 
     try {
-      const res = await apiRequest.post("/auth/login", { username, password });
+      const res = await apiRequest.post("/auth/login", { username, password });  
       if (res.data.pinset === true) {
         updateUser(res.data.data);
+        
         navigate("/home");
       } else {
         updateUser(res.data.data);
@@ -154,9 +155,9 @@ function Login() {
           {error && <span style={{ color: "red" }}>{error}</span>}
 
           <p style={{ marginTop: '20px', backgroundColor:"inherit" }}>
-            <Link to="/passwordForgot" style={{ color: 'grey', textDecoration: 'none' }}>
+            <a href="/passwordForgot" style={{ color: 'grey', textDecoration: 'none' }}>
               Did you forget your password?
-            </Link>
+            </a>
           </p>
         </form>
       </div>

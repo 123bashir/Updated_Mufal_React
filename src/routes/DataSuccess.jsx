@@ -1,6 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const SuccessPage = () => {
+   const navigate=useNavigate()
+     
+    useEffect(() => {
+      const checkUser = async () => {
+        const user = sessionStorage.getItem("user");
+        if (!user) {
+          navigate("/login");
+        }
+      };
+      checkUser();
+    }, [navigate]);
   return (
     <div
       style={{

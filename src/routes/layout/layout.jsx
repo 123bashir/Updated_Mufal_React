@@ -35,16 +35,15 @@ function PreLayout() {
 
 
 function RequireAuth() {
-  const{currentUser}=useContext(AuthContext)
 
   return (
-    !currentUser ? (  <Navigate to="/login" />): ( 
+
     <div className="layout">
     
       <div className="content">
         <Outlet/>
       </div>
-    </div>)
+    </div>
   );
 }
 

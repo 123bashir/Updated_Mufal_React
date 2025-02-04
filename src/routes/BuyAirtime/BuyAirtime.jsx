@@ -48,7 +48,6 @@ try {
       const response=await apiRequest.post("auth/BuyAirtime",{
         network,phonenumber,pin,byepass,Plan,id
       }) 
-      console.log(response)
       navigate("/DataSuccess")
 
 

@@ -34,13 +34,7 @@ import TransactionHistoryA from "./routes/transactionA";
 import TransactionHistory from "./routes/transaction";
 import BFunding from "./routes/BFunding copy/BFunding";
 
-const isAuthenticated = () => {
-  return !!sessionStorage.getItem('user');
-};
 
-const isAdmin = () => {
-  return !!sessionStorage.getItem('admin');
-};
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -51,7 +45,6 @@ function App() {
     }, 2000); 
     return () => clearTimeout(timer);
   }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -71,138 +64,173 @@ function App() {
     },
     {
       path: "/register",
-      element: <Register />, 
+      element: <Register />,
     },
-    
     {
-      path: "/",
-      element: isAuthenticated() ? <RequireAuth /> : <Navigate to="/login" />,
-      children: [
-        {
-          path: "/pin/:id",
-          element: <Pin />,
-        },
-        {
-          path: "/transaction",
-          element: <TransactionHistoryA />,
-        },
-        {
-          path: "/transactionA/:id",
-          element: <TransactionHistoryA />,
-        },
-    
-        {
-          path: "/reciept/:id",
-          element: <TransactionDetails />,
-        },
-      
-        {
-          path: "/DataSuccess",
-          element: <SuccessPage />,
-        },
-        {
-          path: "/userTransaction",
-          element: <UserTransaction />,
-        },
-     
-        {
-          path: "/Home",
-          element: <Home />,
-        },
-        {
-          path: "/fund",
-          element: <Fund />,
-        },
-        {
-          path: "/profile/update",
-          element: <ProfileUpdatePage />,
-        },
-        {
-          path: "/passwordForgot",
-          element: <PasswordForgot />,
-        },
-        {
-          path: "/ChangePin",
-          element: <ChangePin />,
-        },
-        {
-          path: "/BuyAirtime",
-          element: <BuyAirtime />,
-        },
-        {
-          path: "/BuyData",
-          element: <BuyData />,
-        },
-      ],
+      path: "/pin/:id",
+      element: 
+        <Pin />
+      ,
     },
-    
     {
-      path: "/",
-      element: isAdmin() ? <RequireAuth /> : <Navigate to="/" />,
-      children: [
-        {
-          path: "/Adminhome",
-          element: <AdminHome />,
-        },
-        {
-          path: "/ManualFunding",
-          element: <ManualFunding />,
-        },
-        {
-          path: "/user/:id",
-          element: <UserDetail />,
-        },
-        {
-          path: "/MFunding",
-          element: <BFunding />,
-        },
-        {
-          path: "/ManualDebiting",
-          element: <ManualDebiting />,
-        },
-        {
-          path: "/AllSubscribers",
-          element: <AllSubscribers />,
-        },
-        {
-          path: "/Pop",
-          element: <Pop />,
-        },
-        {
-          path: "/FundingHistory",
-          element: <FundingHistory />,
-        },
-        {
-          path: "/BDebiting/:id",
-          element: <ManualDebiting />,
-        },
-        {
-          path: "/BManual",
-          element: <BManual />,
-        },
-        {
-          path: "/BManual/:id",
-          element: <ManualFunding />,
-        },
-        {
-          path: "/9mobilepricing",
-          element: <NMOBILE />,
-        },
-        {
-          path: "/glopricing",
-          element: <GLO />,
-        },
-        {
-          path: "/airtelpricing",
-          element: <AIRTEL />,
-        },
-        {
-          path: "/mtnpricing",
-          element: <MTN />,
-        },
-     
-     
-      ],
+      path: "/transaction",
+      element: 
+        <TransactionHistoryA />
+      ,
+    },
+    {
+      path: "/transactionA/:id",
+      element: 
+        <TransactionHistoryA />
+      ,
+    },
+    {
+      path: "/reciept/:id",
+      element: 
+        <TransactionDetails />
+      ,
+    },
+    {
+      path: "/DataSuccess",
+      element: 
+        <SuccessPage />
+      ,
+    },
+    {
+      path: "/userTransaction",
+      element: 
+        <UserTransaction />
+      ,
+    },
+    {
+      path: "/home",
+      element:
+        <Home />
+    ,
+    },
+    {
+      path: "/fund",
+      element: 
+        <Fund />
+      ,
+    },
+    {
+      path: "/profile/update",
+      element: 
+        <ProfileUpdatePage />
+      ,
+    },
+    {
+      path: "/passwordForgot",
+      element: <PasswordForgot />,
+    },
+    {
+      path: "/ChangePin",
+      element: 
+        <ChangePin />
+      ,
+    },
+    {
+      path: "/BuyAirtime",
+      element: 
+        <BuyAirtime />
+      ,
+    },
+    {
+      path: "/BuyData",
+      element: 
+        <BuyData />
+      ,
+    },
+    {
+      path: "/Adminhome",
+      element: 
+        <AdminHome />
+      ,
+    },
+    {
+      path: "/ManualFunding",
+      element: 
+        <ManualFunding />
+      ,
+    },
+    {
+      path: "/user/:id",
+      element: 
+        <UserDetail />
+      ,
+    },
+    {
+      path: "/MFunding",
+      element: 
+        <BFunding />
+      ,
+    },
+    {
+      path: "/ManualDebiting",
+      element: 
+        <ManualDebiting />
+      ,
+    },
+    {
+      path: "/AllSubscribers",
+      element: 
+        <AllSubscribers />
+      ,
+    },
+    {
+      path: "/Pop",
+      element: 
+        <Pop />
+      ,
+    },
+    {
+      path: "/FundingHistory",
+      element: 
+        <FundingHistory />
+      ,
+    },
+    {
+      path: "/BDebiting/:id",
+      element: 
+        <ManualDebiting />
+      ,
+    },
+    {
+      path: "/BManual",
+      element: 
+        <BManual />
+      ,
+    },
+    {
+      path: "/BManual/:id",
+      element: 
+        <ManualFunding />
+      ,
+    },
+    {
+      path: "/9mobilepricing",
+      element: 
+        <NMOBILE />
+      ,
+    },
+    {
+      path: "/glopricing",
+      element: 
+        <GLO />
+      ,
+    },
+    {
+      path: "/airtelpricing",
+      element: 
+        <AIRTEL />
+      ,
+    },
+    {
+      path: "/mtnpricing",
+      element: 
+        <MTN />
+      ,
     },
   ]);
 

@@ -8,7 +8,16 @@ function UserTransaction() {
 const [data ,setDat]=useState([])
 const navigate=useNavigate()
   const [searchTerm, setSearchTerm] =useState('')
-
+   
+  useEffect(() => {
+    const checkUser = async () => {
+      const user = sessionStorage.getItem("user");
+      if (!user) {
+        navigate("/login");
+      }
+    };
+    checkUser();
+  }, [navigate]);
 useEffect(()=>{
   const fetchUser=async()=>{
     try {
