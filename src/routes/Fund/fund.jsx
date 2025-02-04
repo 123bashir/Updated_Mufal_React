@@ -1,9 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { useEffect } from "react";
 import apiRequest from "../../lib/apiRequest";
 import { redirect, useNavigate } from "react-router-dom";
+
 function Fund() {
    const navigate=useNavigate()
      
@@ -38,6 +39,7 @@ function Fund() {
       return;
     }
 
+
     setLoading(true);
     try {
       const paymentData = {
@@ -65,6 +67,8 @@ function Fund() {
       setLoading(false);
     }
   };
+ 
+
 
   return (
     <div style={{ maxWidth: "400px", margin: "auto", padding: "20px", fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", borderRadius: "8px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
