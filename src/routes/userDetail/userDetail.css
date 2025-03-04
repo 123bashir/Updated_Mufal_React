@@ -1,0 +1,179 @@
+
+.user-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Profile image */
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* User information styling */
+  .user-info h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0.5rem 0;
+  }
+  .user-info .user-email {
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  .user-info .user-balance {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+  }
+  .user-info p {
+    margin: 0.5rem 0;
+  }
+  .user-info .user-additional {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #666;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .user-card {
+      padding: 1.5rem;
+    }
+    .user-info h2 {
+      font-size: 1.5rem;
+    }
+  }
+  /* Container styling */
+  .user-detail-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  .container
+  
+  /* Card styling */
+  .user-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Profile image */
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* User information styling */
+  .user-info h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0.5rem 0;
+  }
+  .user-info .user-email {
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  .user-info .user-balance {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+  }
+  .user-info p {
+    margin: 0.5rem 0;
+  }
+  .user-info .user-additional {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #666;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .user-card {
+      padding: 1.5rem;
+    }
+    .user-info h2 {
+      font-size: 1.5rem;
+    }
+  }
+  /* Container styling */
+  .user-detail-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  /* Card styling */
+  .user-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Profile image */
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* User information styling */
+  .user-info h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0.5rem 0;
+  }
+  .user-info .user-email {
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  .user-info .user-balance {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+  }
+  .user-info p {
+    margin: 0.5rem 0;
+  }
+  .user-info .user-additional {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #666;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .user-card {
+      padding: 1.5rem;
+    }
+    .user-info h2 {
+      font-size: 1.5rem;
+    }
+  }
+  

@@ -1,0 +1,116 @@
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  /* Title and description styling */
+  .container h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+  .container p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  /* Search bar styling */
+  .search-bar {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+  .search-bar:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+  }
+  
+  /* Table container styling */
+  .table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table styling */
+  .customer-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .customer-table th, .customer-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .customer-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+  .customer-table .table-row:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  /* Customer detail card styling */
+  .customer-details {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    text-align: left;
+  }
+  .customer-details h2 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  .customer-details p {
+    margin: 0.5rem 0;
+  }
+  .customer-details .close-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .customer-details .close-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Media queries */
+  @media (max-width: 768px) {
+    .customer-table th, .customer-table td {
+      padding: 0.8rem;
+    }
+    .customer-details {
+      padding: 1rem;
+    }
+  } */
+  /* Container styling */
+  .user-detail-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
